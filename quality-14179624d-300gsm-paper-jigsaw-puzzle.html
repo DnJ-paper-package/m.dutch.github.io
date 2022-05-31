@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+<meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="telephone=no" name="format-detection">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="preload" type="text/css" as="style" href="/themes/mobile14/style/css/commonV2.css">
+<link type="text/css" rel="stylesheet" href="/themes/mobile14/style/css/commonV2.css" media="all">
+    <style type="text/css">
+        .showdetail .bestfor{
+            margin-top: 0.16rem;
+        }
+        .showdetail .saveYourTime{
+            margin: 0.16rem auto;
+        }
+        .closemask{
+            display: none;
+        }
+        .showdetail .tableMore1 .tableC{
+            padding-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 顶部search s-->
+<style>
+    #dialog-content-pql {
+        max-height: 90%;
+        overflow: auto;
+        font-size: 12px;
+    }
+
+    #dialog-content-pql .quote-item input {
+        margin-bottom: 0;
+    }
+
+    #dialog-content-pql .quote-item {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    #dialog-content-pql .quote-item * {
+        box-sizing: border-box;
+    }
+
+    #dialog-content-pql .quote-item .item-title {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    #dialog-content-pql .quote-item input:not([type="checkbox"]),
+    #dialog-content-pql .quote-item .select-wrap {
+        width: 100%;
+        border: 0;
+        background-color: #f4f6f5;
+        padding: 0 16px;
+        font-size: 14px;
+        height: 2.7em;
+    }
+
+    #dialog-content-pql .quote-item .select-wrap select {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        appearance: auto;
+        background: transparent;
+        outline: 0;
+    }
+
+    #dialog-content-pql .quote-item .tip-info {
+        padding-left: 6px;
+        color: #666;
+        line-height: 20px;
+        font-size: .9em;
+        padding-top: 3px;
+    }
+
+    #dialog-content-pql .quote-item .errorTip {
+        font-size: .85em;
+    }
+
+    #dialog-content-pql .quote-item .errorTip .icon {
+        font-size: 1em;
+    }
+
+    #dialog-content-pql .quote-item .quote-unit {
+        position: relative;
+        padding: 0 14px 0 10px;
+        font-size: 14px;
+        line-height: 2.7em;
+        color: #222;
+        background-color: #ddd;
+        border-radius: 0;
+        z-index: 5;
+    }
+
+    #dialog-content-pql .quote-item .with-unit-wrap {
+        display: flex;
+    }
+
+    #dialog-content-pql .quote-item .checkbox-wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #dialog-content-pql .quote-item .checkbox-wrap label {
+        position: relative;
+        z-index: 1;
+        font-size: .85em;
+        margin-right: 16px;
+        margin-bottom: 8px;
+        line-height: 30px;
+        padding: 0 12px;
+        border: 1px solid #ddd;
+    }
+
+    #dialog-content-pql .quote-item .checkbox-wrap label span {
+        display: block;
+        user-select: none;
+        color: #666;
+    }
+
+    #dialog-content-pql .quote-item .checkbox-wrap [type=checkbox] {
+        height: 10px;
+        width: 10px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        opacity: 0;
+    }
+
+    #dialog-content-pql .quote-item .checkbox-wrap label.on {
+        background: #fff5e6;
+        border-color: #ff9900;
+        box-shadow: 0 0 0 1px #ff9900 inset
+    }
+
+    #dialog-content-pql .quote-item .checkbox-wrap label.on span {
+        color: #222;
+    }
+
+    #dialog-content-pql .quote-item .checkbox-wrap label.on::before,
+    #dialog-content-pql .quote-item .checkbox-wrap label.on::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        border: 10px solid transparent;
+        border-bottom-color: #ff9900;
+        border-right-color: #ff9900;
+    }
+
+    #dialog-content-pql .quote-item .checkbox-wrap label.on::after {
+        width: 6px;
+        height: 6px;
+        border: 2px solid #fff;
+        border-top: 0;
+        border-left: 0;
+        transform: translate(-2px, -3px) rotate(45deg);
+    }
+
+    #dialog-content-pql .quote-item .errorTip {
+        display: flex;
+        font-size: 13px;
+        color: red;
+        align-items: center;
+        line-height: 20px;
+    }
+
+    #dialog-content-pql .quote-item .errorTip>span {
+        border-radius: 50%;
+        background: red;
+        width: 16px;
+        height: 16px;
+        line-height: 13px;
+        vertical-align: middle;
+        color: #fff;
+        text-align: center;
+        margin-right: 6px;
+    }
+
+    #dialog-content-pql .quote-item .select-wrap {
+        position: relative;
+    }
+
+    #dialog-content-pql .quote-item .quote-unit::before {
+        content: "";
+        position: absolute;
+        right: 100%;
+        width: 4px;
+        height: 100%;
+        background: inherit;
+    }
+</style>
+<script>
+    
+        var originProductInfo = {"pid":14179624,"name":"300gsm document Puzzel","source_url":"\/sale-14179624-300gsm-paper-jigsaw-puzzle.html","showproduct":1,"price":"fructuated","moq":"100-1000sets","propertyDetail":[["Productnaam","Douane 3D Document Puzzel"],["Materiaal","Document"]],"picurl":"\/\/m.dutch.paper-package.com\/photo\/pd35608545-300gsm_paper_jigsaw_puzzle.jpg","subject":"Stuur mij meer informatie over uw 300gsm document Puzzel","username":"cnjillhung"};
+    var pinfo = '{\"pid\":14179624,\"name\":\"300gsm document Puzzel\",\"source_url\":\"\\/sale-14179624-300gsm-paper-jigsaw-puzzle.html\",\"showproduct\":1,\"price\":\"fructuated\",\"moq\":\"100-1000sets\",\"propertyDetail\":[[\"Productnaam\",\"Douane 3D Document Puzzel\"],[\"Materiaal\",\"Document\"]],\"picurl\":\"\\/\\/m.dutch.paper-package.com\\/photo\\/pd35608545-300gsm_paper_jigsaw_puzzle.jpg\",\"subject\":\"Stuur mij meer informatie over uw 300gsm document Puzzel\",\"username\":\"cnjillhung\"}';
+        var save_url = "/contactsave.html";
+    var update_url = "/updateinquiry.html";
+    var defaulProductInfo = {};
+    var myDate = new Date();
+    var curDate = myDate.getFullYear()+'-'+(parseInt(myDate.getMonth())+1)+'-'+myDate.getDate();
+    resInfo = originProductInfo;
+    defaulProductInfo.pid = resInfo['pid'];
+    defaulProductInfo.subject = resInfo['subject'];
+
+    var g_inquirypopup = 1;
+    var message_1 = 'Lieve,'+'\r\n'+"Ik ben geïnteresseerd"+' '+trim(resInfo['name'])+", kun je me meer details sturen, zoals type, maat, MOQ, materiaal, etc."+'\r\n'+"Bedankt!"+'\r\n'+"Wachten op je antwoord.";
+    var message_2 = 'Hallo,'+'\r\n'+"ik ben op zoek naar"+' '+trim(resInfo['name'])+", stuur mij de prijs, specificatie en foto."+'\r\n'+"Uw snelle reactie wordt zeer op prijs gesteld."+'\r\n'+"Neem gerust contact met mij op voor meer informatie."+'\r\n'+"Heel erg bedankt.";
+    var message_3 = 'Hallo,'+'\r\n'+trim(resInfo['name'])+' '+"voldoet aan mijn verwachtingen."+'\r\n'+"Geef me de beste prijs en wat andere productinformatie."+'\r\n'+"Neem gerust contact met mij op via mijn mail."+'\r\n'+"Heel erg bedankt.";
+
+    var message_4 = 'Lieve,'+'\r\n'+"Wat is de FOB-prijs op uw"+' '+trim(resInfo['name'])+'?'+'\r\n'+"Wat is de dichtstbijzijnde poortnaam?"+'\r\n'+"Reageer me zo snel mogelijk, het is beter om meer informatie te delen."+'\r\n'+"Vriendelijke groeten!";
+    var message_5 = 'Hallo daar,'+'\r\n'+"Ik ben erg geïnteresseerd in jouw"+' '+trim(resInfo['name'])+'.'+'\r\n'+"Stuur mij alstublieft uw productdetails."+'\r\n'+"Ik kijk uit naar je snelle antwoord."+'\r\n'+"Neem gerust contact met mij op via mail."+'\r\n'+"Vriendelijke groeten!";
+
+    var message_6 = 'Lieve,'+'\r\n'+"Geef ons alstublieft informatie over uw"+' '+trim(resInfo['name'])+", zoals type, maat, materiaal en natuurlijk de beste prijs."+'\r\n'+"Ik kijk uit naar je snelle antwoord."+'\r\n'+"Dank u!";
+    var message_7 = 'Lieve,'+'\r\n'+"Kunt u leveren"+' '+trim(resInfo['name'])+" voor ons?"+'\r\n'+"Eerst willen we een prijslijst en enkele productdetails."+'\r\n'+"Ik hoop zo snel mogelijk antwoord te krijgen en kijk uit naar samenwerking."+'\r\n'+"Heel erg bedankt.";
+    var message_8 = 'Hoi,'+'\r\n'+"ik ben op zoek naar"+' '+trim(resInfo['name'])+", geef me alstublieft wat meer gedetailleerde productinformatie."+'\r\n'+"Ik kijk uit naar uw antwoord."+'\r\n'+"Dank u!";
+    var message_9 = 'Hallo,'+'\r\n'+"Uw"+' '+trim(resInfo['name'])+" voldoet zeer goed aan mijn eisen."+'\r\n'+"Stuur me alstublieft de prijs, specificatie en vergelijkbaar model."+'\r\n'+"Voel je vrij om met mij te chatten."+'\r\n'+"Bedankt!";
+    var message_10 = 'Lieve,'+'\r\n'+"Ik wil meer weten over de details en offerte van"+' '+trim(resInfo['name'])+'.'+'\r\n'+"Neem gerust contact met mij op."+'\r\n'+"Vriendelijke groeten!";
+
+    var r = getRandom(1,10);
+
+    defaulProductInfo.message = eval("message_"+r);
+        //defaulProductInfo.message = '';
+    function getRandom(m,n){
+    　　var num = Math.floor(Math.random()*(m - n) + n);
+    　　return num;
+    };
+    function trim(str)
+    {
+        str = str.replace(/(^\s*)/g,"");
+        return str.replace(/(\s*$)/g,"");
+    };
+    var form_serialize = '';
+    function beforestrBtn() {
+        form_serialize = '';
+                form_serialize = form_serialize.replace(/\+/g, "%2B");
+        strBtn();
+    }
+    function toCheckMust(name) {
+        $('#'+name+'error').hide();
+    }
+    window.addEventListener('load', function () {
+        $('.checkbox-wrap label').each(function(){
+            if($(this).find('input').prop('checked')){
+                $(this).addClass('on')
+            }else {
+                $(this).removeClass('on')
+            }
+        })
+        $(document).on('click', '.checkbox-wrap label' , function(ev){
+            if (ev.target.tagName.toUpperCase() != 'INPUT') {
+                $(this).toggleClass('on')
+            }
+        })
+    })
+</script>
+<div class="leave-message-dialog" style="display: none">
+        <style>
+            
+            .leave-message-dialog ul,.leave-message-dialog li{list-style:none}.dialog-content-pql-id .mr span{font-size:16px}.leave-message-dialog{background-color:rgba(0,0,0,0.5);position:fixed;top:0;right:0;bottom:0;left:0;z-index:10000;font-family:roboto,'helvetica narrow',PingFang-SC-Medium,PingFang-SC,sans-serif !important}.leave-message-dialog .dialog-content-pql{max-width:100%;width:90%;box-sizing:border-box;position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);background-color:#ffffff;border-radius:4px;padding:30px 15px}.leave-message-dialog .dialog-content-pql-id{max-width:100%}.leave-message-dialog .close{position:absolute;width:15px;height:15px;top:15px;right:15px;cursor:pointer}.leave-message-dialog .close:before,.leave-message-dialog .close:after{position:absolute;content:"";background-color:#707070;width:15px;height:2px;top:50%;left:0}.leave-message-dialog .close:before{transform:rotate(45deg)}.leave-message-dialog .close:after{transform:rotate(-45deg)}.leave-message-dialog .title{font-size:24px;color:#333333;text-align:center;line-height:1.5}.leave-message-dialog p{margin:0}.leave-message-dialog .form{width:100%;margin-top:22px}.leave-message-dialog .form input,.leave-message-dialog .form .textarea{background-color:#F5F5F5;font-family:roboto,'helvetica narrow',PingFang-SC-Medium,PingFang-SC,sans-serif !important}.leave-message-dialog .form input,.leave-message-dialog .form textarea{display:block;width:100%;border-radius:4px;border:none;outline:none;box-sizing:border-box;padding:12px 19px;line-height:20px;margin-bottom:15px;text-indent:0}.leave-message-dialog .form input{height:44px}.leave-message-dialog .form .textarea{position:relative}.leave-message-dialog .form textarea{height:200px;resize:none;background-color:transparent;position:relative;z-index:1}textarea::-webkit-input-placeholder{font-family:roboto,'helvetica narrow',PingFang-SC-Medium,PingFang-SC,sans-serif !important}.leave-message-dialog .form::-webkit-input-placeholder{font-size:16px;color:#999999}.leave-message-dialog .form:-moz-placeholder{font-size:16px;color:#999999}.leave-message-dialog .form::-moz-placeholder{font-size:16px;color:#999999}.leave-message-dialog .form:-ms-input-placeholder{font-size:16px;color:#999999}.leave-message-dialog .form #submitStart{margin:0 auto}.leave-message-dialog .form #submitStart:hover{filter:brightness(110%)}.dialog-content-pql-id .img{width:100%;height:200px;border-radius:2px;display:inline-block;position:relative}.dialog-content-pql-id .img img{max-width:100%;max-height:100%;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}.dialog-content-pql-id .right{width:100%}.dialog-content-pql-id .title{text-align:left;word-wrap:break-word;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}.dialog-content-pql-id input{width:100%;height:40px;margin-top:20px;border:none;outline:none;background:rgb(245,245,245);text-indent:16px;font-size:16px}.dialog-content-pql .btn{background:#3984FF;width:200px;height:40px;border-radius:4px;text-align:center;line-height:40px;font-size:18px;color:#fff;margin:0 auto;margin-top:30px;cursor:pointer;padding:0;}.dialog-content-pql .btn:hover{filter:brightness(110%)}.dialog-content-pql-id .mr{position:absolute;width:70px;height:40px;bottom:0;left:0;line-height:40px;text-align:center;color:rgb(117,117,117)}.dialog-content-pql-id .mr::before{position:absolute;content:"";display:block;border:5px solid #000;border-color:#000 transparent transparent transparent;top:50%;transform:translateY(-50%);right:5px;margin-top:3px}.dialog-content-pql-id .mr ul{position:absolute;width:100%;cursor:pointer;top:34px;background:rgb(245,245,245);box-shadow:0 3px 5px 0 rgba(0,0,0,.1);border:1px solid #ededed;display:none}.dialog-content-pql-ok .duihaook{width:80px;height:80px;margin:0 auto;margin-top:50px;margin-bottom:50px;position:relative}.dialog-content-pql-ok .duihaook::after{content:"";display:inline-block;background:rgb(52,218,0);width:35px;height:12px;transform:rotate(45deg);position:absolute;left:16px;top:35px;border-radius:2px}.dialog-content-pql-ok .duihaook::before{content:"";display:inline-block;background:rgb(164,255,148);width:50px;height:15px;transform:rotate(-45deg);position:absolute;left:32px;border-radius:2px;top:26px}.dialog-content-pql .error-pql{margin-top:-12px;margin-bottom:10px;color:red;display:none;font-size:14px;}.dialog-content-pql .icon-pql{width:20px;height:20px;display:inline-block;vertical-align:middle;background:red;border-radius:50%}.dialog-content-pql .icon-pql img{width:100%;height:100%}.dialog-content-pql-id .mr ul li:hover{filter:brightness(103%)}.dialog-content-pql-id .mr ul li:active{filter:brightness(108%)}.dialog-content-pql-id .mr ul li{background:rgb(245,245,245);user-select:none;font-size:16px}
+                
+        </style>
+        <div class="dialog-content-pql" id="dialog-content-pql" style="display: none">
+            <span class="close" onclick="closepql()"></span>
+            <div class="title">
+                <p class="firstp-pql">Laat een bericht achter</p>
+                <p class="lastp-pql">We bellen je snel terug!</p>
+            </div>
+            <div class="form">
+                                <div class="textarea">
+                    <textarea style="font-family: roboto,'helvetica narrow',PingFang-SC-Medium,PingFang-SC,sans-serif !important;" name="" id="textareamessage" cols="30" rows="10"
+                        placeholder=""></textarea>
+                </div>
+                                <p class="error-pql"> <span class="icon-pql"><img src="/themes/mobile14/style/images/error.png" alt="error.png"></span>Uw bericht moet tussen de 20-3.000 tekens bevatten!</p>
+                <input id="startEmail" type="text" placeholder="Ga uw E-mail in">
+                <p class="error-pql"><span class="icon-pql"><img src="/themes/mobile14/style/images/error.png" alt="error.png"></span> Controleer uw e-mail!</p>
+                <input style="display:none" id="startTel" oninput="value=value.replace(/[^0-9_+-]/g,'');" type="text" placeholder="Telefoonnummer">
+                <div class="operations">
+                    <div class='btn' id="submitStart" type="submit" onclick="beforestrBtn()">VERZENDEN</div>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-content-pql dialog-content-pql-id" id="dialog-content-pql-id" style="display:none">
+            <input type="hidden" name="pop_pid" id="pop_pid" value="0">
+             <input type="hidden" name="pop_subject" id="pop_subject" value="">
+             <input type="hidden" name="pop_iid" id="pop_iid" value="0">
+             <input type="hidden" name="pop_uuid" id="pop_uuid" value="">
+            <span class="close" onclick="closepql2()"></span>
+            <div class="right">
+                <p class="title">Meer informatie zorgt voor een betere communicatie.</p>
+                <div style="position: relative;">
+                    <div class="mr"> <span id="Mr">Dhr.</span>
+                        <ul>
+                            <li>Dhr.</li>
+                            <li>Mevrouw</li>
+                        </ul>
+                    </div>
+                    <input style="text-indent: 80px;" type="text" id="idnamepql" placeholder="Your name">
+                </div>
+                <input type="text" id="idphonepql" placeholder="Telefoonnummer">
+                <input type="text" id="idcompanypql" placeholder="Bedrijf">
+                <div class="btn" id="twoBtnOk" onclick="twoBtnOk()">OK</div>
+            </div>
+        </div>
+        <div class="dialog-content-pql dialog-content-pql-ok" id="dialog-content-pql-ok" style="display:none">
+            <span class="close" onclick="closepql()"></span>
+            <div class="duihaook"></div>
+            <p class="title">Succesvol ingediend!</p>
+            <p class="p1" style="text-align: center; font-size: 18px; margin-top: 14px;">We bellen je snel terug!</p>
+            <div class="btn" onclick="closepql()" id="endOk" style="margin: 0 auto;margin-top: 50px;">OK</div>
+        </div>
+    </div>
+<div class="page_top">
+    <div class="topFix topfixshadow intercept" data-log="click-tab@top" style="display: block;">
+        <div class="search-box">
+            <a class="goback" onclick="window.history.go(-1);"><i class="iconfont icon13back"></i></a>
+            <div id="searchTap">
+                <form id="search">
+                        <input value="" name="search" type="text" placeholder="Wat u die zijn zoeken?" class="form-control" />
+                        <!-- <a class="delbtn" href="javascript:void(0);" style="display: none;"><i class="iconfont iconUnfold_16"></i></a> -->
+                        <button class="btn">sousou text<i class="iconfont icon13search icon-search"></i></button>
+                    
+                </form>
+            </div>
+            <div class="lanmu">
+                <div class="showlanmu" style="display: inline;    font-size: 0px;"> menu text lable<i class="iconfont icon13menu"></i></div>
+                <div  class="dellanmu close_pop" style="display: none;    font-size: 0px;">menu text lable<i class="iconfont icon13close"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 侧栏 -->
+
+<div class="menubox" id="menubox">
+    <div class="item">
+        <div class="itemScroll">
+            <div class="keylist">
+                <div><a href="/">
+                    <span class="icontitle">Thuis</span>
+                    <i class="iconfont icon13next"></i>
+                </a>
+            </div>
+                <div><a href="/products.html">
+                    <span class="icontitle">Producten</span>
+                    <i class="iconfont icon13next"></i>
+                </a>
+            </div>
+                <div><a href="/aboutus.html">
+                    <span class="icontitle">Over ons</span>
+                    <i class="iconfont icon13next"></i>
+                </a>
+            </div>
+                <div><a href="/contactnow.html">
+                    <span class="icontitle">Contacteer ons</span>
+                    <i class="iconfont icon13next"></i>
+                </a>
+            </div>
+            </div>
+            
+                        <div class="keylist">
+                                <div><a href="/supplier-433394-corrugated-paper-packaging-box" title="Golfdocument Verpakkend Vakje">
+                           Golfdocument Verpakkend Vakje                        <i class="iconfont icon13next"></i></a></div>
+                                <div><a href="/supplier-433397-custom-paper-packaging-box" title="Douanedocument Verpakkend Vakje">
+                           Douanedocument Verpakkend Vakje                        <i class="iconfont icon13next"></i></a></div>
+                                <div><a href="/supplier-434470-paperboard-packaging-box" title="Kartonnen Verpakkende Doos">
+                           Kartonnen Verpakkende Doos                        <i class="iconfont icon13next"></i></a></div>
+                                <div><a href="/supplier-433405-paper-jigsaw-puzzle" title="Document Puzzel">
+                           Document Puzzel                        <i class="iconfont icon13next"></i></a></div>
+                                <div><a href="/supplier-434471-rigid-gift-box" title="Stijve Giftdoos">
+                           Stijve Giftdoos                        <i class="iconfont icon13next"></i></a></div>
+                                <div><a href="/supplier-433406-foldable-paper-box" title="Vouwbaar Document Vakje">
+                           Vouwbaar Document Vakje                        <i class="iconfont icon13next"></i></a></div>
+                                <div><a href="/supplier-433404-cardboard-paper-gift-box" title="Kartondocument Giftvakje">
+                           Kartondocument Giftvakje                        <i class="iconfont icon13next"></i></a></div>
+                                <div><a href="/supplier-434472-recycled-paper-gift-bag" title="Gerecycleerde Document Giftzak">
+                           Gerecycleerde Document Giftzak                        <i class="iconfont icon13next"></i></a></div>
+                                <div><a href="/supplier-434473-color-printing-brochure" title="Kleurendrukbrochure">
+                           Kleurendrukbrochure                        <i class="iconfont icon13next"></i></a></div>
+                                <div><a href="/supplier-433401-paper-hang-tag" title="Document Hangtag">
+                           Document Hangtag                        <i class="iconfont icon13next"></i></a></div>
+                                <div><a href="/supplier-434474-printed-paper-sticker" title="Gedrukte Document Sticker">
+                           Gedrukte Document Sticker                        <i class="iconfont icon13next"></i></a></div>
+                            </div>
+           
+        </div>
+    </div>
+    <div class="englishSelect">
+        <i class="iconfont icon13language"></i>
+        <form id="lanForm"></form>
+        <select id="language_change">
+                            <option value='http://m.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        English                    </option>
+                                <option value='http://m.french.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        French                    </option>
+                                <option value='http://m.german.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        German                    </option>
+                                <option value='http://m.italian.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Italian                    </option>
+                                <option value='http://m.russian.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Russian                    </option>
+                                <option value='http://m.spanish.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Spanish                    </option>
+                                <option value='http://m.portuguese.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Portuguese                    </option>
+                                <option value='http://m.dutch.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                    selected >
+                        Dutch                    </option>
+                                <option value='http://m.greek.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Greek                    </option>
+                                <option value='http://m.japanese.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Japanese                    </option>
+                                <option value='http://m.korean.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Korean                    </option>
+                                <option value='http://m.arabic.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Arabic                    </option>
+                                <option value='http://m.hindi.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Hindi                    </option>
+                                <option value='http://m.turkish.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Turkish                    </option>
+                                <option value='http://m.indonesian.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Indonesian                    </option>
+                                <option value='http://m.vietnamese.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Vietnamese                    </option>
+                                <option value='http://m.thai.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Thai                    </option>
+                                <option value='http://m.bengali.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Bengali                    </option>
+                                <option value='http://m.persian.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Persian                    </option>
+                                <option value='http://m.polish.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle'
+                     >
+                        Polish                    </option>
+                            </select>
+
+        </select>
+        <i class="iconfont icon13select"></i>
+    </div>
+</div>
+
+<div class="gothetop iconfont icontop_" id="back-top" style="display: block;"> </div>
+<div class="chatpl" id="chatpl"><a style='font-size: 0px;' href="/webim/webim_tab_mobile.html" target="_blank" rel="nofollow" onclick= 'setwebimCookie(69379,14179624,0);'> chat now<img src="/themes/mobile14/style/images/chat.png" alt="chat.png"></a></div><!-- 顶部search e-->
+<!-- // - content s -->
+
+<div class="main showdetail">
+    <div class="mainover">
+
+        <div class="tableMore1">
+            <div class="tableC">
+                <h1 class="tableT">300gsm document Puzzel</h1>
+                <div class="tableS"> 
+                    <div class="companyL baobiao">
+                                                    <div>
+                                <div class="key">Hoog licht</div>
+                                <div class="val"><h2 class='HighLight' style='display: inline-block;font-weight: bold;font-size: .28rem;'>300gsm document Puzzel</h2>, <h2 class='HighLight' style='display: inline-block;font-weight: bold;font-size: .28rem;'>CCNB-Document Puzzel</h2></div>
+                            </div>
+                                                                                <div>
+                                <div class="key">Plaats van herkomst</div>
+                                <div class="val">Guangdong, China</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Merknaam</div>
+                                <div class="val">OEM/ODM</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Certificering</div>
+                                <div class="val">ASTM, prop66</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Modelnummer</div>
+                                <div class="val">Douane</div>
+                            </div>
+                                                                            <div>
+                                <div class="key">Min. bestelaantal</div>
+                                <div class="val">100-1000sets</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Prijs</div>
+                                <div class="val">fructuated</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Verpakking Details</div>
+                                <div class="val">Standaard Verpakking</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Levertijd</div>
+                                <div class="val">7-14 werkdag</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Betalingscondities</div>
+                                <div class="val">L/C, D/A, D/P, T/T, Western Union, MoneyGram</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Levering vermogen</div>
+                                <div class="val">300000 Stuk/Stukken per   Maand</div>
+                            </div>
+                                                                                                    <div>
+                                <div class="key">Productnaam</div>
+                                <div class="val">Douane 3D Document Puzzel</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Materiaal</div>
+                                <div class="val">Document</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Stijl</div>
+                                <div class="val">DIY-STUK SPEELGOED, Onderwijsstuk speelgoed</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Leeftijdsgroep</div>
+                                <div class="val">5 tot 7 jaar, 8 tot 13 Jaar</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Kleur</div>
+                                <div class="val">CMYK+Pantone</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Grootte</div>
+                                <div class="val">70x50cm</div>
+                            </div>
+                                                    <div>
+                                <div class="key">MOQ</div>
+                                <div class="val">1000 Reeksen</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Eigenschap</div>
+                                <div class="val">100% milieuvriendelijk</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Sleutelwoord</div>
+                                <div class="val">Raadsel Klein Speelgoed</div>
+                            </div>
+                                                    <div>
+                                <div class="key">Ontwerp</div>
+                                <div class="val">keur aangepast ontwerp goed</div>
+                            </div>
+                        
+                                                                                                                                                                                                                                                                                                                </div>
+                    <div class="Product_table_box ">
+                        <p><strong><span style="font-size:22px;"><span style="font-family:arial,helvetica,sans-serif;">Document Naar maat gemaakte Baby en Kinderenfiguurzaag Volwassen Puzzel Toy Present<span style="font-size:22px;"></span></span></span></strong></p> 
+
+<div data-host="112916026" data-id="detail_decorate_root" data-magic-global="%7B%22bizId%22%3A2209955866384%2C%22pageId%22%3A20133807811%2C%22siteId%22%3A10002085051%7D" id="detail_decorate_root"><strong><span style="font-size:22px;"><span style="font-family:arial,helvetica,sans-serif;"><style type="text/css">#detail_decorate_root .magic-0{width:750px}#detail_decorate_root .magic-1{overflow:hidden;width:750px;height:647px;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0}#detail_decorate_root .magic-2{margin-top:0;margin-left:0;width:750px;height:647px}#detail_decorate_root .magic-3{overflow:hidden;width:750px;height:133px;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0}#detail_decorate_root .magic-4{margin-top:0;margin-left:0;width:750px;height:133px}#detail_decorate_root .magic-5{width:750px;border-collapse:collapse}#detail_decorate_root .magic-6{min-height:28px;padding:5px 10px;width:217px;min-height:28px;box-sizing:content-box}#detail_decorate_root .magic-7{font-size:16px}#detail_decorate_root .magic-8{min-height:28px;padding:5px 10px;width:480px;min-height:28px;box-sizing:content-box}#detail_decorate_root .magic-9{margin-bottom:10px;line-height:0}#detail_decorate_root .magic-10{margin-bottom:0}#detail_decorate_root .magic-11{position:relative;width:100%}#detail_decorate_root .magic-12{overflow:hidden;width:373px;height:373px;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0}#detail_decorate_root .magic-13{margin-top:-3px;margin-left:0;width:373px;height:373px}#detail_decorate_root .magic-14{overflow:hidden;width:373px;height:373px;margin-top:0;margin-bottom:0;margin-left:4px;margin-right:0}#detail_decorate_root .magic-15{margin-top:32px;margin-left:-26px;width:426px;height:331px}#detail_decorate_root .magic-16{vertical-align:top}#detail_decorate_root .magic-17{padding:0;margin:0;color:#333;font-size:14px;padding-left:4px;font-weight:bold;white-space:pre-wrap}#detail_decorate_root .magic-18{vertical-align:top;display:block;padding-right:4px;box-sizing:border-box;padding-left:4px}#detail_decorate_root .magic-19{vertical-align:top;padding-bottom:4px;box-sizing:border-box;padding-top:4px}#detail_decorate_root .magic-20{padding:0;margin:0;white-space:pre-wrap;font-size:14px}#detail_decorate_root .magic-21{overflow:hidden;width:750px;height:1118px;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0}#detail_decorate_root .magic-22{margin-top:0;margin-left:0;width:750px;height:1118px}#detail_decorate_root .magic-23{overflow:hidden;width:750px;height:1041px;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0}#detail_decorate_root .magic-24{margin-top:0;margin-left:0;width:750px;height:1041px}#detail_decorate_root .magic-25{overflow:hidden;width:750px;height:1616px;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0}#detail_decorate_root .magic-26{margin-top:0;margin-left:0;width:750px;height:1616px}#detail_decorate_root .magic-27{overflow:hidden;width:750px;height:1619px;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0}#detail_decorate_root .magic-28{margin-top:0;margin-left:0;width:750px;height:1619px}#detail_decorate_root .magic-29{overflow:hidden;width:750px;height:1103px;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0}#detail_decorate_root .magic-30{margin-top:0;margin-left:0;width:750px;height:1103px}
+</style>
+<span style="font-size:16px;"></span><span style="font-family:arial,helvetica,sans-serif;"></span></span></span></strong><div module-id="24195015546" module-title="detailSingleImage" render="true"><br />
+<noscript><strong><span style="font-size:22px;"><span style="font-family:arial,helvetica,sans-serif;"><img src="/photo/paper-package/editor/20210825090022_30199.jpg" data-id="child-image-0" class="magic-2 lazyi" data-src="" alt="300gsm document Puzzel" style="max-width: 320px;"></span></span></strong></noscript><strong><span style="font-size:22px;"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"></span><span style="font-family:arial,helvetica,sans-serif;"></span></span></span></strong></div>
+
+<div module-id="24195015547" module-title="detailSingleImage" render="true">
+<p><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"><strong>Beschrijving:<span style="font-size:16px;"></span><span style="font-family:arial,helvetica,sans-serif;"></span></strong></span></span></p>
+
+<p><span style="font-size:16px;"><span style="font-family:arial,helvetica,sans-serif;">Een puzzel is een het betegelen raadsel dat de assemblage van vaak vreemd genoeg het gestalte gegeven met elkaar verbinden vereist en mosaiced stukken. Typisch, heeft elk individueel stuk een gedeelte van een beeld; wanneer geassembleerd, veroorzaken zij een volledig beeld.<span style="font-size:16px;"></span></span></span></p> 
+</div>
+
+<div module-id="24195015548" module-title="detailTableHightLight" render="true"> </div>
+
+<div module-id="24195015549" module-title="detailManyImage" render="true">
+<div data-module-name="icbu-pc-detailManyImage">
+<div><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"><strong>De scherpe lijn is het belangrijkst!<span style="font-size:16px;"></span><span style="font-family:arial,helvetica,sans-serif;"></span></strong></span></span></div>
+</div>
+</div>
+
+<div module-id="24195015551" module-title="detailTextWithTitle" render="true">
+<div>
+<div>
+<div>
+<div>
+<div data-id="paragraph0"><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"><strong>1. </strong>De grootte is en de scherpe lijn bepaalt het materiële kosten en drukproces.<span style="font-family:arial,helvetica,sans-serif;"></span></span></span><div> <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">2. Het materiaal kon op kartonnen houten EVA baseren, en kon karton op de oppervlakte lijmen.</span></span><br /><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">3. De dikte zou 0,8 1,0 1,5 2,0 3.0mm kunnen zijn, beslist het door matrial, 800gsm -1500gsm.</span></span><br /><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">4. Pakketstijl, konden wij met de hand gemaakt doospakket buiten, of eenvoudige plastic zak aanbieden.</span></span><br /><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">5. T/T of de betaling via Alibaba is beschikbaar.</span></span><br /><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">6. Meer aangepast ontwerp, de post of het vereiste verzendt ons gelieve naar.<span style="font-family:arial,helvetica,sans-serif;"></span></span></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div module-id="24195015552" module-title="detailSingleImage" render="true"><br />
+<noscript><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"><img src="/photo/paper-package/editor/20210825090027_67256.jpg" data-id="child-image-0" class="magic-24 lazyi" data-src="" alt="300gsm document Puzzel" style="max-width: 320px;"></span></span></noscript><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;"><span style="font-size:16px;"></span><span style="font-family:arial,helvetica,sans-serif;"></span></span></span></div>
+
+<div module-id="24195015554" module-title="detailSingleImage" render="true"><span style="font-size:16px;"><strong>Productiedetail:<span style="font-size:16px;"></span></strong></span><noscript><span style="font-size:16px;"><strong><img src="/photo/paper-package/editor/20210825090028_94940.jpg" data-id="child-image-0" class="magic-26 lazyi" data-src="" alt="300gsm document Puzzel" style="max-width: 320px;"></strong></span></noscript></div>
+
+<div module-id="24195015555" module-title="detailSingleImage" render="true">
+<table border="1" cellpadding="0" cellspacing="0" style="width: 700px;">
+	<tbody>
+		<tr>
+			<td>Productnaam</td>
+			<td style="width: 574px;">Document Naar maat gemaakte Baby en Kinderenfiguurzaag Volwassen Puzzel Toy Present</td>
+		</tr>
+		<tr>
+			<td>Grootte (L*W*H)</td>
+			<td style="width: 574px;">Aangepast</td>
+		</tr>
+		<tr>
+			<td>Vorm</td>
+			<td style="width: 574px;">Vierkant/Rechthoek/Zeshoek</td>
+		</tr>
+		<tr>
+			<td>Kleur</td>
+			<td style="width: 574px;">Aangepast</td>
+		</tr>
+		<tr>
+			<td>Prijs</td>
+			<td style="width: 574px;">Overeen te komen</td>
+		</tr>
+		<tr>
+			<td>Materiaal</td>
+			<td style="width: 574px;">300gsm CCNB, e-fluit golfkarton</td>
+		</tr>
+		<tr>
+			<td>Druk</td>
+			<td style="width: 574px;">4c druk</td>
+		</tr>
+		<tr>
+			<td>Het eindigen</td>
+			<td style="width: 574px;">Glanzende laminering</td>
+		</tr>
+		<tr>
+			<td>Merk</td>
+			<td style="width: 574px;">OEM en ODM zijn beschikbaar, en wij kunnen uw embleem op de doos drukken</td>
+		</tr>
+		<tr>
+			<td>Verpakking</td>
+			<td style="width: 574px;">Polybag binnen, de uitvoerk=k golfdocument karton of volgens de eisen van de klant</td>
+		</tr>
+		<tr>
+			<td>Industrie</td>
+			<td style="width: 574px;">Onderwijsspeelgoed voor kinderen zoals lego, puzzel, etc.</td>
+		</tr>
+		<tr>
+			<td>Steekproeftijd</td>
+			<td style="width: 574px;">5-7 dagen voor document vakje</td>
+		</tr>
+		<tr>
+			<td>MOQ</td>
+			<td style="width: 574px;">1,000pcs (Document Vakje). Keur Grote Hoeveelheidsorde goed</td>
+		</tr>
+		<tr>
+			<td>wekelijkse levering</td>
+			<td style="width: 574px;">50.000 eenheden - 100.000 eenheden</td>
+		</tr>
+		<tr>
+			<td>Betalingstermijnen</td>
+			<td style="width: 574px;">T/T, L/C, de Western Union, Moneygram, Borg, Paypal</td> 
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div module-id="24195015555" module-title="detailSingleImage" render="true"> </div> 
+
+<div module-id="24195015556" module-title="detailSingleImage" render="true"> </div>
+
+<div module-id="24195015556" module-title="detailSingleImage" render="true"><img src="/test/paper-package.com/photo/pl35608549-remark.jpg" style="max-width: 320px;" class="lazyi" alt="300gsm document Puzzel"><img src="/test/paper-package.com/photo/pl35606069-remark.jpg" style="max-width: 320px;" class="lazyi" alt="300gsm document Puzzel"><br />
+<noscript><img src="/photo/paper-package/editor/20210825090029_25399.jpg" data-id="child-image-0" class="magic-30 lazyi" data-src="" alt="300gsm document Puzzel" style="max-width: 320px;"></noscript><span style="font-size:16px;"></span><span style="font-family:arial,helvetica,sans-serif;"></span></div>
+
+<div module-id="24195015557" module-title="detailSingleImage" render="true">
+<div>
+<div>
+<div>
+<div>
+<div><img data-id="child-image-0" data-src="" src="/photo/paper-package/editor/20210825090029_70749.jpg" style="max-width: 320px;" class="lazyi" alt="300gsm document Puzzel"><noscript><img src="/photo/paper-package/editor/20210825090029_70749.jpg" data-id="child-image-0" class="magic-4 lazyi" data-src="" alt="300gsm document Puzzel" style="max-width: 320px;"></noscript><span style="font-size:16px;"></span><span style="font-family:arial,helvetica,sans-serif;"></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div module-id="24195015558" module-title="detailTextContent" render="true">
+<div>
+<div>
+<div>
+<div>
+<div><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">Q: Kunnen wij sommige steekproeven krijgen? Om het even welke lasten?</span></span><br /><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">A: Ja, zullen de aangepaste steekproeven een opstellingsprijs volgens uw vereisten worden aangerekend. Wij bieden ook vrije steekproeven voor u aan om de kwaliteit te controleren, maar wij dekken niet de het verschepen kosten.</span></span><br />
+<br />
+<span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">Q: Hoe kunnen wij een citaat krijgen?</span></span><br /><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">A: Gelieve te bieden specificaties van de producten, zoals materiaal, grootte, vorm, kleur, hoeveelheid, oppervlakte het eindigen, enz. aan</span></span><br />
+<br />
+<span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">Q: Kunt u met het ontwerp helpen? Welk dossier van het formaatontwerp wilt u voor druk?</span></span><br /><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">A: Wij hebben professionele ontwerpers met eenvoudige informatie zoals emblemen en sommige beelden te helpen. Ontwerpformaat: AI; PDF; CDR; PSD; EPS.</span></span><br />
+<br />
+<span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">Q: Hoe lang kan ik een krijgen steekproef en hoe lang is de massaproduktie levertijd?</span></span><br /><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">A: Steekproeftijd: 3-5days, productiedoorlooptijd is gewoonlijk ongeveer 7-20 werkdagen.</span></span><br />
+<br />
+<span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">Q: Hoe kan ik of zijn mijn goederen vervaardigd weten?</span></span><br /><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">A: De foto's namen ter plaatse zullen naar u tijdens de productie worden verzonden. Wij zullen u bijgewerkt op tijd houden.</span></span><br />
+<br />
+<span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">Q: Hoe kunt u uw kwaliteit waarborgen? Als wij uw kwaliteit niet tevredenstellen, wat u zult doen?</span></span><br /><span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:16px;">A: Normaal doen wij steekproeven voor u elk detail vóór massaproduktie bevestigen. De goederen zullen volgens de bevestigde steekproeven worden geproduceerd. Voor kwaliteitskwesties, gelieve te keren met redenen en foto's terug dan wij u verbeterden vervangingen of terugbetalingen zullen verzenden. Voor de Orden van de Handelsverzekering, kunt u de te bespreken hulp van Alibaba aanvragen<span style="font-family:arial,helvetica,sans-serif;"></span></span></span></div> 
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div module-id="24195015558" module-title="detailTextContent" render="true">
+<div>
+<div>
+<div>
+<div>
+<div> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div module-id="24195015558" module-title="detailTextContent" render="true">
+<div>
+<div>
+<div>
+<div>
+<div>.</div> 
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div module-id="24195015559" module-title="detailSingleImage" render="true"><br />
+<noscript><img src="/photo/paper-package/editor/20210825090030_64651.jpg" data-id="child-image-0" class="magic-4 lazyi" data-src="" alt="300gsm document Puzzel" style="max-width: 320px;"></noscript></div>
+</div>                    </div>
+                    <div class="floatbot">
+                        <a href="/contactnow.html" onclick= 'setinquiryCookie("{\"pid\":14179624,\"name\":\"300gsm document Puzzel\",\"source_url\":\"\\/sale-14179624-300gsm-paper-jigsaw-puzzle.html\",\"showproduct\":1,\"price\":\"fructuated\",\"moq\":\"100-1000sets\",\"propertyDetail\":[[\"Productnaam\",\"Douane 3D Document Puzzel\"],[\"Materiaal\",\"Document\"]],\"picurl\":\"\\/\\/m.dutch.paper-package.com\\/photo\\/pd35608545-300gsm_paper_jigsaw_puzzle.jpg\",\"subject\":\"Stuur mij meer informatie over uw 300gsm document Puzzel\",\"username\":\"cnjillhung\"}","","","","Beste prijs");'>
+                            <span class="iconfont icon13sent">Geef uw vereiste                        </a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="moban bestfor">
+    <span class="mobanTitle">Krijg de beste prijs voor</span>
+    <div class="mobanContent">
+        <div class="company_font flex_l">
+          <div class="l_img"><img class="intercept" src="//m.dutch.paper-package.com/photo/pd35608545-300gsm_document_puzzel.jpg" alt="300gsm document Puzzel" /></div>
+          <div class="flexjust">
+                <h2 class="r_font_t">300gsm document Puzzel</h2>
+                                                                                                                                                                                                                                       </div>
+        </div>
+        <p>
+            <a href="/contactnow.html" onclick='setinquiryCookie("{\"pid\":14179624,\"name\":\"300gsm document Puzzel\",\"source_url\":\"\\/sale-14179624-300gsm-paper-jigsaw-puzzle.html\",\"showproduct\":1,\"price\":\"fructuated\",\"moq\":\"100-1000sets\",\"propertyDetail\":[[\"Productnaam\",\"Douane 3D Document Puzzel\"],[\"Materiaal\",\"Document\"]],\"picurl\":\"\\/\\/m.dutch.paper-package.com\\/photo\\/pd35608545-300gsm_paper_jigsaw_puzzle.jpg\",\"subject\":\"Ik ben ge\\u00efnteresseerd in uw 300gsm document Puzzel\",\"username\":\"cnjillhung\"}","","","","Beste prijs");' class="siglebtn wid200 next">Doorgaan<span class="iconfont icon13next"></span>
+            </a>
+        </p>
+    </div>
+</div>        
+        <div class="saveYourTime">
+            <div class="saveLogo">
+                <img src="/themes/mobile14/style/images/requirement_img_savetime.png" alt="requirement_img_savetime">
+            </div>
+            <div class="saveText">
+                <span>Bespaar je tijd</span>
+                <p>Laat ons met u contact opnemen met de beste producten.</p>
+                <a href="/contactnow.html" onclick= 'setinquiryCookie(pinfo,"","","","Contacteer ons");'>Geef uw vereiste</a>
+            </div>
+        </div>
+
+        <div class="linklist">
+            <a href="/products.html"><i class="iconfont icon13next"></i>Producten</a>
+            <a href="/supplier-433394-corrugated-paper-packaging-box" title="Golfdocument Verpakkend Vakje">
+                           <i class="iconfont icon13next"></i>Golfdocument Verpakkend Vakje</a>
+        </div>
+       
+        <!-- 底部导航 s-->
+         <div class="m_footer ">
+    <div class="link_to_box flex_lr ">
+            <a class="intercept" title="" href="/">Thuis</a>            <div class="bar_col_foot"></div>
+           <a class="intercept" title="" href="/aboutus.html">Ongeveer ons</a>            <div class="bar_col_foot"></div>
+            <a class="intercept" title="" href="/contactnow.html">Contacteer ons</a>            <div class="bar_col_foot"></div>
+            <a target="blank" href="//www.paper-package.com/quality-14179624d-300gsm-paper-jigsaw-puzzle" class="">Desktop Site</a>
+    </div>
+    <div class="f_vertif">
+            All Rights Reserved. Kwaliteit <a href=/buy-golfdocument-verpakkend-vakje.html target='_blank'><h2>Golfdocument Verpakkend Vakje</h2></a> China Fabriek.    </div>
+    <div class="f_share_box flex_lr ">
+                <a class="face intercept" >
+                   companyInfo facebook <span><i class="iconfont icon13facebook"></i></span>
+                </a>
+                <a class="in intercept" >
+                    companyInfo twitter<span><i class="iconfont icon13twitter"></i></span>
+                </a>
+                <a class="tw intercept" >
+                    companyInfo linkedin<span><i class="iconfont icon13linkedin"></i></span>
+                </a>
+    </div>
+</div>
+
+            <!-- 底部导航 e-->
+    </div>
+</div>
+<!-- // - content e -->
+<script src="/themes/mobile14/js/jquery.min.js?t=1012"></script>
+<script src="/themes/mobile14/js/common.js?t=1012"></script>
+
+<script type="text/javascript">
+
+    (function() {
+        var e = document.createElement('script');
+        e.type = 'text/javascript';
+        e.async = true;
+        e.src = '/stats.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(e, s);
+    })();
+</script>
+<script type="text/javascript">
+    $(function(){
+        var t = $(".bestfor").offset().top,f = 0,h = window.innerHeight;
+        $(window).scroll(function(){
+            if( $(this).scrollTop() > t-h){
+                $(".floatbot").hide();
+            } else{
+               $(".floatbot").show();
+            }
+        })  
+    });
+</script>
+<noscript><img style="display:none" src="/stats.php" rel="nofollow" /></noscript>
+</body>
+
+</html>
+<!-- static:2022-04-21 05:23:36 -->
